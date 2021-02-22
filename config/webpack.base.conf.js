@@ -9,6 +9,13 @@ const TerserPlugin = require('terser-webpack-plugin');
 const rules = require('./webpack.rules.conf.js');
 const copyWebpackPlugin = require('copy-webpack-plugin');
 
+function getSeperatePath (url) {
+  let paths = {
+    fileName: '',
+    exactName: ''
+  }
+}
+
 function getEntry () {
   var entry = {};
   // 获得pages下所有页面的index.js
@@ -69,7 +76,9 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     ...htmlPlugins,
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      filename: '/css/[name].css'
+    }),
     new copyWebpackPlugin({
       patterns: [
         {

@@ -9,7 +9,15 @@ module.exports = [
   },
   {
     test: /\.(sass|scss)$/,
-    use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+    use: [
+      {
+        loader: MiniCssExtractPlugin.loader,
+        options: {
+          publicPath: '/public'
+        }
+      },
+      'css-loader', 'sass-loader'
+    ],
     include: path.resolve(__dirname, '../src')
   },
   {
